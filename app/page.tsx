@@ -1,4 +1,9 @@
+"use client";
+
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { ImageModal } from "@/components/ui/image-modal";
 
 import { Card } from "@/components/ui/card";
 
@@ -28,6 +33,8 @@ import {
 } from "lucide-react";
 
 export default function HomePage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className="flex min-h-screen flex-col bg-background">
       {/* Header */}
@@ -41,14 +48,14 @@ export default function HomePage() {
               variant="outline"
               size="sm"
               className="hidden md:flex rounded-full font-medium px-6 h-10 bg-card border-border text-card-foreground hover:bg-accent hover:text-accent-foreground shadow-sm"
-               
-  
+
+
 
             >
               <Link href="https://dashboard.cave.ng/auth/login" target="_blank" prefetch={true}>
                 Sign In
               </Link>
-              
+
             </Button>
             <Button
               size="sm"
@@ -73,14 +80,10 @@ export default function HomePage() {
               Enterprise Resource Planning Platform
             </Badge>
             <h1 className="mb-6 text-balance text-4xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl">
-              The Complete Operating System for Your Organization
+              Why Pay for Multiple Systems?
             </h1>
             <p className="mb-8 text-pretty text-lg text-foreground/80 md:text-xl leading-relaxed">
-              Transform your entire organization with CAVE's AI-powered
-              automation, seamless integration, and enterprise-grade security.
-              From startups to global conglomerates—empower your team,
-              streamline operations, and unlock your organization's full
-              potential.
+              <span className="font-semibold text-foreground">Meet CAVE ERP.</span> The all-in-one platform combining Finance, HR, Payroll, Built-in Email, and Projects with powerful AI. Built for simplicity, speed, and scale—all for one affordable price.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild>
@@ -95,21 +98,41 @@ export default function HomePage() {
           </div>
           {/* Video Section */}
           <div className="mx-auto mt-16 max-w-5xl">
-            <div className="aspect-video overflow-hidden rounded-lg border border-border bg-muted">
-              {/* biome-ignore lint/a11y/useMediaCaption: Video captions would be added when available */}
-              <video
-                className="h-full w-full object-cover"
-                controls
-                poster="/landing/videos/modern-enterprise-dashboard.png"
-                aria-label="CAVE ERP product demonstration video"
-              >
-                <source
-                  src="/landing/videos/commercial-video.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
+            <div
+              className="relative aspect-video overflow-hidden rounded-lg border border-border bg-muted shadow-2xl cursor-zoom-in group"
+              onClick={() => setIsModalOpen(true)}
+            >
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-10 flex items-center justify-center pointer-events-none">
+                <span className="opacity-0 group-hover:opacity-100 bg-black/60 text-white px-4 py-2 rounded-full text-sm font-medium transition-opacity">
+                  Click to Expand
+                </span>
+              </div>
+              <Image
+                src="/landing/images/dashboard-preview-v2.png?v=3"
+                alt="CAVE ERP Dashboard Preview"
+                fill
+                className="object-contain dark:hidden"
+                priority
+                quality={100}
+                unoptimized
+              />
+              <Image
+                src="/landing/images/dashboard-preview-dark.png?v=3"
+                alt="CAVE ERP Dashboard Preview"
+                fill
+                className="hidden object-contain dark:block"
+                priority
+                quality={100}
+                unoptimized
+              />
             </div>
+            <ImageModal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              lightSrc="/landing/images/dashboard-preview-v2.png"
+              darkSrc="/landing/images/dashboard-preview-dark.png"
+              alt="CAVE ERP Dashboard Preview"
+            />
           </div>
         </section>
         {/* Trust Section */}
