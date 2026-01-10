@@ -10,6 +10,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 import { NavLinks } from "@/components/marketing/nav-links";
+import { MobileNav } from "@/components/marketing/mobile-nav";
 
 import { PricingSection } from "@/components/marketing/pricing-section";
 
@@ -60,12 +61,13 @@ export default function HomePage() {
             <Button
               size="sm"
               asChild
-              className="rounded-full font-semibold px-6 h-10 bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg transition-all"
+              className="hidden md:flex rounded-full font-semibold px-6 h-10 bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg transition-all"
             >
               <Link href="https://dashboard.cave.ng/auth/register" target="_blank" prefetch={true}>
                 Try It Free
               </Link>
             </Button>
+            <MobileNav />
           </div>
         </div>
       </header>
@@ -77,7 +79,7 @@ export default function HomePage() {
               variant="secondary"
               className="mb-6 font-bold text-sm md:text-base"
             >
-              Enterprise Resource Planning Platform
+              COMPACT ERP FOR MODERN ORGANIZATIONS
             </Badge>
             <h1 className="mb-6 text-balance text-4xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl">
               Why Pay for Multiple Systems?
@@ -108,7 +110,7 @@ export default function HomePage() {
                 </span>
               </div>
               <Image
-                src="/landing/images/dashboard-preview-v2.png?v=3"
+                src="/landing/images/dashboard-preview-v2.png?v=4"
                 alt="CAVE ERP Dashboard Preview"
                 fill
                 className="object-contain dark:hidden"
@@ -117,7 +119,7 @@ export default function HomePage() {
                 unoptimized
               />
               <Image
-                src="/landing/images/dashboard-preview-dark.png?v=3"
+                src="/landing/images/dashboard-preview-dark.png?v=4"
                 alt="CAVE ERP Dashboard Preview"
                 fill
                 className="hidden object-contain dark:block"
@@ -345,7 +347,8 @@ export default function HomePage() {
           plans={[
             {
               name: "Free",
-              price: "₦0",
+              priceUSD: 0,
+              priceNGN: 0,
               buttonText: "Get Started",
               features: [
                 "1 Organization",
@@ -362,7 +365,8 @@ export default function HomePage() {
             },
             {
               name: "Pro",
-              price: "₦9,000",
+              priceUSD: 4.99, // Base price in USD
+              priceNGN: 9000, // Fixed NGN price
               buttonText: "Get Pro",
               features: [
                 "Up to 3 Organizations",
@@ -380,7 +384,8 @@ export default function HomePage() {
             },
             {
               name: "ProAI",
-              price: "₦18,000",
+              priceUSD: 11.99, // Base price in USD
+              priceNGN: 18000, // Fixed NGN price
               buttonText: "Get ProAI",
               features: [
                 "Up to 3 Organizations",
@@ -399,7 +404,8 @@ export default function HomePage() {
             },
             {
               name: "Premium",
-              price: "₦45,000",
+              priceUSD: 29.99, // Base price in USD
+              priceNGN: 45000, // Fixed NGN price
               buttonText: "Get Premium",
               features: [
                 "Unlimited Organizations",
@@ -425,7 +431,8 @@ export default function HomePage() {
             },
             {
               name: "PremiumAI",
-              price: "₦60,000",
+              priceUSD: 39.99, // Base price in USD
+              priceNGN: 60000, // Fixed NGN price
               buttonText: "Get PremiumAI",
               features: [
                 "Unlimited Organizations",
@@ -572,7 +579,7 @@ export default function HomePage() {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/community"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     Community
@@ -580,7 +587,7 @@ export default function HomePage() {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/status"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     Status
@@ -595,7 +602,7 @@ export default function HomePage() {
               <ul className="space-y-3 text-base">
                 <li>
                   <Link
-                    href="#"
+                    href="/about"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     About
@@ -603,7 +610,7 @@ export default function HomePage() {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/blog"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     Blog
@@ -611,7 +618,7 @@ export default function HomePage() {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/privacy"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     Privacy Policy
@@ -619,7 +626,7 @@ export default function HomePage() {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/terms"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     Terms of Service
@@ -630,7 +637,7 @@ export default function HomePage() {
           </div>
           <div className="mt-12 border-t border-border pt-8 text-center">
             <p className="text-base font-medium text-muted-foreground">
-              &copy; 2025 CAVE ERP. All rights reserved.
+              &copy; {new Date().getFullYear()} CAVE ERP. All rights reserved.
             </p>
           </div>
         </div>

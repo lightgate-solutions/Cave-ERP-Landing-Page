@@ -18,10 +18,10 @@ export interface Currency {
 }
 
 export const CURRENCIES: Currency[] = [
-  { code: "NGN", symbol: "₦", name: "Nigerian Naira", rate: 1 },
-  { code: "USD", symbol: "$", name: "US Dollar", rate: 0.00067 }, // 1 USD ≈ 1,500 NGN (2024 average)
+  { code: "USD", symbol: "$", name: "US Dollar", rate: 0.00067 }, // 1 USD ≈ 1,500 NGN (2024 average) - Default currency
   { code: "EUR", symbol: "€", name: "Euro", rate: 0.00062 }, // 1 EUR ≈ 1,614 NGN (2024 average)
   { code: "GBP", symbol: "£", name: "British Pound", rate: 0.00053 }, // 1 GBP ≈ 1,900 NGN (2024 average)
+  { code: "NGN", symbol: "₦", name: "Nigerian Naira", rate: 1 },
   { code: "CAD", symbol: "C$", name: "Canadian Dollar", rate: 0.00049 }, // 1 CAD ≈ 2,040 NGN (approximate)
   { code: "AUD", symbol: "A$", name: "Australian Dollar", rate: 0.00045 }, // 1 AUD ≈ 2,222 NGN (approximate)
   { code: "JPY", symbol: "¥", name: "Japanese Yen", rate: 0.0045 }, // 1 JPY ≈ 222 NGN (approximate)
@@ -41,14 +41,24 @@ export function CurrencySelector({
   );
 
   useEffect(() => {
-    // Load saved currency preference from localStorage
+    // Load saved currency preference from localStorage, default to USD
     const savedCurrency = localStorage.getItem("preferred-currency");
     if (savedCurrency) {
       const currency = CURRENCIES.find((c) => c.code === savedCurrency);
       if (currency) {
         setSelectedCurrency(currency);
         onCurrencyChange?.(currency);
+      } else {
+        // If saved currency not found, default to USD (first in array)
+        const usdCurrency = CURRENCIES[0]; // USD is now first
+        setSelectedCurrency(usdCurrency);
+        onCurrencyChange?.(usdCurrency);
       }
+    } else {
+      // No saved preference, default to USD
+      const usdCurrency = CURRENCIES[0]; // USD is now first
+      setSelectedCurrency(usdCurrency);
+      onCurrencyChange?.(usdCurrency);
     }
   }, [onCurrencyChange]);
 

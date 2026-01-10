@@ -26,7 +26,7 @@ export function ImageModal({
                     <div className="relative w-full h-full flex items-center justify-center">
                         <div className="relative w-full h-full">
                             <Image
-                                src={`${lightSrc}?v=3`}
+                                src={`${lightSrc}?v=4`}
                                 alt={alt}
                                 fill
                                 className="object-contain dark:hidden"
@@ -36,7 +36,7 @@ export function ImageModal({
                                 unoptimized
                             />
                             <Image
-                                src={`${darkSrc}?v=3`}
+                                src={`${darkSrc}?v=4`}
                                 alt={alt}
                                 fill
                                 className="hidden object-contain dark:block"

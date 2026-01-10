@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { AnchorLink } from "@/components/marketing/anchor-link";
 import { HelpSearch } from "@/components/marketing/help-search";
 import { Logo } from "@/components/marketing/logo";
+import { MobileNav } from "@/components/marketing/mobile-nav";
 import { CollapsibleTicketForm } from "@/components/marketing/collapsible-ticket-form";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import {
@@ -21,7 +22,6 @@ import {
   HelpCircle,
   CheckCircle,
   ArrowRight,
-  Sparkles,
 } from "lucide-react";
 
 export default function HelpPage() {
@@ -64,48 +64,41 @@ export default function HelpPage() {
             <Button
               variant="outline"
               size="sm"
-              asChild
               className="hidden md:flex rounded-full font-medium px-6 h-10 bg-card border-border text-card-foreground hover:bg-accent hover:text-accent-foreground shadow-sm"
             >
-              <Link href="/auth/login" prefetch={true}>
+              <Link href="https://dashboard.cave.ng/auth/login" target="_blank" prefetch={true}>
                 Sign In
               </Link>
             </Button>
             <Button
               size="sm"
               asChild
-              className="rounded-full font-semibold px-6 h-10 bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg transition-all"
+              className="hidden md:flex rounded-full font-semibold px-6 h-10 bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg transition-all"
             >
-              <Link href="/auth/register" prefetch={true}>
+              <Link href="https://dashboard.cave.ng/auth/register" target="_blank" prefetch={true}>
                 Try It Free
               </Link>
             </Button>
+            <MobileNav />
           </div>
         </div>
       </header>
 
       <main className="flex-1 bg-background">
-        {/* Hero Section - Enhanced */}
-        <section className="relative border-b border-border bg-gradient-to-b from-background via-background to-muted/20 py-20 md:py-24">
+        {/* Hero Section */}
+        <section className="relative border-b border-border bg-gradient-to-b from-background via-background to-muted/30 py-16 md:py-20">
           <div className="container mx-auto px-4 md:px-6">
             <div className="mx-auto max-w-4xl text-center">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
-                <Sparkles className="h-4 w-4" />
-                We're here to help
-              </div>
-              <h1 className="mb-6 text-5xl font-bold text-foreground md:text-6xl lg:text-7xl">
-                How can we{" "}
-                <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                  help you?
-                </span>
+              <h1 className="mb-4 text-4xl font-bold text-foreground md:text-5xl lg:text-6xl transition-opacity duration-700 ease-out">
+                How can we help you?
               </h1>
-              <p className="mb-10 text-xl text-foreground/70 leading-relaxed md:text-2xl">
+              <p className="mb-10 text-lg text-muted-foreground leading-relaxed md:text-xl transition-opacity duration-700 ease-out delay-75">
                 Find answers, get support, and discover everything you need to
                 succeed with CAVE ERP
               </p>
 
               {/* Enhanced Search Bar */}
-              <div className="mx-auto max-w-2xl">
+              <div className="mx-auto max-w-2xl transition-opacity duration-700 ease-out delay-150">
                 <HelpSearch />
               </div>
             </div>
@@ -135,7 +128,6 @@ export default function HelpPage() {
                   description:
                     "Learn the basics of CAVE ERP and get up and running quickly",
                   href: "/documentation/getting-started",
-                  gradient: "from-blue-500 to-cyan-500",
                 },
                 {
                   icon: CheckCircle,
@@ -143,7 +135,6 @@ export default function HelpPage() {
                   description:
                     "Explore all CAVE ERP capabilities and powerful features",
                   href: "/documentation/modules",
-                  gradient: "from-purple-500 to-pink-500",
                 },
                 {
                   icon: HelpCircle,
@@ -151,14 +142,12 @@ export default function HelpPage() {
                   description:
                     "Manage your subscription, payments, and account settings",
                   href: "/documentation",
-                  gradient: "from-green-500 to-emerald-500",
                 },
                 {
                   icon: MessageCircle,
                   title: "Troubleshooting",
                   description: "Find solutions to common issues and problems",
                   href: "#faqs",
-                  gradient: "from-orange-500 to-red-500",
                 },
                 {
                   icon: Phone,
@@ -166,36 +155,41 @@ export default function HelpPage() {
                   description:
                     "Connect CAVE ERP with your favorite tools and services",
                   href: "/documentation/api",
-                  gradient: "from-indigo-500 to-blue-500",
                 },
                 {
                   icon: Clock,
                   title: "Best Practices",
                   description: "Learn tips, tricks, and optimal usage patterns",
                   href: "/documentation/tutorials",
-                  gradient: "from-teal-500 to-cyan-500",
                 },
-              ].map((category) => (
-                <Link key={category.title} href={category.href}>
-                  <Card className="group relative flex h-full flex-col overflow-hidden border-border/50 bg-card p-6 transition-all hover:border-primary hover:shadow-xl">
-                    <div
-                      className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${category.gradient} text-white shadow-lg transition-transform group-hover:scale-110`}
-                    >
-                      <category.icon className="h-6 w-6" />
-                    </div>
-                    <h3 className="mb-2 text-xl font-semibold leading-tight text-foreground">
-                      {category.title}
-                    </h3>
-                    <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
-                      {category.description}
-                    </p>
-                    <div className="mt-auto flex items-center text-sm font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
-                      Learn more
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </div>
-                  </Card>
-                </Link>
-              ))}
+              ].map((category, index) => {
+                // Assign subtle color lights for each category icon
+                const iconColors = [
+                  { bg: "bg-blue-500/10", text: "text-blue-600 dark:text-blue-400" }, // Getting Started
+                  { bg: "bg-purple-500/10", text: "text-purple-600 dark:text-purple-400" }, // Features & Modules
+                  { bg: "bg-green-500/10", text: "text-green-600 dark:text-green-400" }, // Account & Billing
+                  { bg: "bg-orange-500/10", text: "text-orange-600 dark:text-orange-400" }, // Troubleshooting
+                  { bg: "bg-indigo-500/10", text: "text-indigo-600 dark:text-indigo-400" }, // Integrations
+                  { bg: "bg-teal-500/10", text: "text-teal-600 dark:text-teal-400" }, // Best Practices
+                ];
+                const iconColor = iconColors[index] || iconColors[0];
+
+                return (
+                  <Link key={category.title} href={category.href}>
+                    <Card className="group flex h-full flex-col border-border bg-gradient-to-br from-card to-muted/20 p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-sm hover:-translate-y-0.5">
+                      <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg ${iconColor.bg} ${iconColor.text} transition-all duration-300`}>
+                        <category.icon className="h-6 w-6 transition-transform duration-300 group-hover:scale-105" />
+                      </div>
+                      <h3 className="mb-2 text-lg font-semibold text-foreground transition-colors duration-300 group-hover:text-primary">
+                        {category.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        {category.description}
+                      </p>
+                    </Card>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -355,7 +349,7 @@ export default function HelpPage() {
         {/* Support Ticket Form - Collapsible */}
         <section
           id="submit-ticket"
-          className="border-t border-border bg-gradient-to-b from-muted/30 to-background py-12 md:py-16"
+          className="border-t border-border bg-background py-12 md:py-16"
         >
           <div className="container mx-auto px-4 md:px-6">
             <div className="mx-auto max-w-4xl">
@@ -516,7 +510,7 @@ export default function HelpPage() {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/community"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     Community
@@ -524,7 +518,7 @@ export default function HelpPage() {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/status"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     Status
@@ -540,7 +534,7 @@ export default function HelpPage() {
               <ul className="space-y-3 text-base">
                 <li>
                   <Link
-                    href="#"
+                    href="/about"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     About
@@ -548,7 +542,7 @@ export default function HelpPage() {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/blog"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     Blog
@@ -556,7 +550,7 @@ export default function HelpPage() {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/privacy"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     Privacy Policy
@@ -564,7 +558,7 @@ export default function HelpPage() {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/terms"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     Terms of Service
