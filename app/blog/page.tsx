@@ -307,7 +307,7 @@ export default function BlogPage() {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/contact"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     Contact Us

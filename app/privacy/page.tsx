@@ -545,6 +545,14 @@ export default function PrivacyPage() {
                 </li>
                 <li>
                   <Link
+                    href="/contact"
+                    className="text-muted-foreground hover:text-foreground font-medium transition-colors"
+                  >
+                    Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/status"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
