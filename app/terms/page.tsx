@@ -706,17 +706,6 @@ export default function TermsPage() {
             <p className="text-base font-medium text-muted-foreground">
               &copy; {new Date().getFullYear()} CAVE ERP. All rights reserved.
             </p>
-            <p className="mt-2 text-sm text-muted-foreground">
-              CAVE ERP is a product of{" "}
-              <Link
-                href="https://www.lightgatesolutions.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-primary hover:underline"
-              >
-                LightGate Solutions
-              </Link>
-            </p>
           </div>
         </div>
       </footer>

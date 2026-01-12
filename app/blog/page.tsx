@@ -264,13 +264,24 @@ export default function BlogPage() {
               <p className="text-base leading-relaxed text-muted-foreground">
                 The complete operating system for your organization
               </p>
+              <p className="mt-4 text-sm text-muted-foreground">
+                A product of{" "}
+                <Link
+                  href="https://www.lightgatesolutions.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-primary hover:underline"
+                >
+                  LightGate Solutions
+                </Link>
+              </p>
             </div>
             <div>
               <h3 className="mb-6 text-base font-bold tracking-tight">Product</h3>
               <ul className="space-y-3 text-base">
                 <li>
                   <Link
-                    href="#features"
+                    href="/#features"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     Features
@@ -278,7 +289,7 @@ export default function BlogPage() {
                 </li>
                 <li>
                   <Link
-                    href="#pricing"
+                    href="/#pricing"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     Pricing
@@ -311,6 +322,22 @@ export default function BlogPage() {
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/community"
+                    className="text-muted-foreground hover:text-foreground font-medium transition-colors"
+                  >
+                    Community
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/status"
+                    className="text-muted-foreground hover:text-foreground font-medium transition-colors"
+                  >
+                    Status
                   </Link>
                 </li>
               </ul>

@@ -516,6 +516,17 @@ export default function HomePage() {
               <p className="text-base leading-relaxed text-muted-foreground">
                 The complete operating system for your organization
               </p>
+              <p className="mt-4 text-sm text-muted-foreground">
+                A product of{" "}
+                <Link
+                  href="https://www.lightgatesolutions.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-primary hover:underline"
+                >
+                  LightGate Solutions
+                </Link>
+              </p>
             </div>
             <div>
               <h3 className="mb-6 text-base font-bold tracking-tight">
@@ -524,7 +535,7 @@ export default function HomePage() {
               <ul className="space-y-3 text-base">
                 <li>
                   <Link
-                    href="#features"
+                    href="/#features"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     Features
@@ -532,7 +543,7 @@ export default function HomePage() {
                 </li>
                 <li>
                   <Link
-                    href="#pricing"
+                    href="/#pricing"
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     Pricing
@@ -544,14 +555,6 @@ export default function HomePage() {
                     className="text-muted-foreground hover:text-foreground font-medium transition-colors"
                   >
                     Documentation
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-muted-foreground hover:text-foreground font-medium transition-colors"
-                  >
-                    API
                   </Link>
                 </li>
               </ul>
